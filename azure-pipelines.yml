@@ -15,3 +15,9 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+  
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Pay-As-You-Go (59ed7061-63b2-4299-bd5a-f81e3e98d46e)'
+    appName: 'testapp001'
+    package: $(System.DefaultWorkingDirectory)/**/*.zip
